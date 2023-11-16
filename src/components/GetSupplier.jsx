@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
+import GetId from './GetId'
 
 export default (props) => {
 
     const [supplier, setSupplier] = useState([])
-    const parts = props.node.data._links.part.href.split("/")
-    const REST_URL = 'http://localhost:8080/api/parts/' + parts[(parts.length - 1)] + '/supplier'
+    const REST_URL = 'https://partsos.onrender.com/api/parts/' + GetId(props) + '/supplier'
 
     useEffect(() => getSupplier(), [])
 
@@ -17,6 +17,6 @@ export default (props) => {
             .catch(error => console.error(error))
     }
 
-    return <span>{supplier.name}</span>
+    return supplier.name
 
 }

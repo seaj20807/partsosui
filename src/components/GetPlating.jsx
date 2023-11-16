@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
+import GetId from "./GetId"
 
 export default (props) => {
 
     const [plating, setPlating] = useState([])
-    const parts = props.node.data._links.plating.href.split("/")
-    const REST_URL = 'http://localhost:8080/api/processes/' + parts[(parts.length - 2)] + '/plating'
+    const REST_URL = 'https://partsos.onrender.com/api/processes/' + GetId(props) + '/plating'
 
     useEffect(() => getPlating(), [])
 
@@ -17,6 +17,6 @@ export default (props) => {
             .catch(error => console.error(error))
     }
 
-    return <span>{plating.platingMaterial}</span>
+    return plating.platingMaterial
 
 }

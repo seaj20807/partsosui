@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
+import GetId from "./GetId"
 
 export default (props) => {
 
     const [part, setPart] = useState([])
-    const parts = props.node.data._links.part.href.split("/")
-    const REST_URL = 'http://localhost:8080/api/processes/' + parts[(parts.length - 2)] + '/part'
+    const REST_URL = 'https://partsos.onrender.com/api/processes/' + GetId(props) + '/part'
 
     useEffect(() => getPart(), [])
 
@@ -17,6 +17,6 @@ export default (props) => {
             .catch(error => console.error(error))
     }
 
-    return <span>{part.name}</span>
+    return part.name
 
 }

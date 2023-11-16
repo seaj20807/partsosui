@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { AgGridReact } from 'ag-grid-react'
-import Button from '@mui/material/Button'
 import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-material.css'
 import GetId from './GetId'
@@ -8,7 +7,7 @@ import GetId from './GetId'
 export default function Platings() {
 
     const [platingsList, setPlatingsList] = useState([])
-    const REST_URL = "http://localhost:8080/api/platings"
+    const REST_URL = "https://partsos.onrender.com/api/platings"
 
     useEffect(() => getPlatingsList(), [])
 
@@ -23,9 +22,18 @@ export default function Platings() {
 
     const columns = [
         {
-            cellRenderer: GetId, headerName: 'Element Symbol'
+            cellRenderer: GetId,
+            headerName: 'Chemical Symbol',
+            sortable: true,
+            filter: true,
+            floatingFilter: true
         },
-        { field: 'platingMaterial' }
+        {
+            field: 'platingMaterial',
+            sortable: true,
+            filter: true,
+            floatingFilter: true
+        }
     ]
 
     return (

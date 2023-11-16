@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { AgGridReact } from 'ag-grid-react'
-import Button from '@mui/material/Button'
 import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-material.css'
 
 export default function Suppliers() {
 
     const [suppliersList, setSuppliersList] = useState([])
-    const REST_URL = "http://localhost:8080/api/suppliers"
+    const REST_URL = "https://partsos.onrender.com/api/suppliers"
 
     useEffect(() => getSuppliersList(), [])
 
@@ -21,10 +20,30 @@ export default function Suppliers() {
     }
 
     const columns = [
-        { field: 'name' },
-        { field: 'address' },
-        { field: 'phone' },
-        { field: 'email' }
+        {
+            field: 'name',
+            sortable: true,
+            filter: true,
+            floatingFilter: true
+        },
+        {
+            field: 'address',
+            sortable: true,
+            filter: true,
+            floatingFilter: true
+        },
+        {
+            field: 'phone',
+            sortable: true,
+            filter: true,
+            floatingFilter: true
+        },
+        {
+            field: 'email',
+            sortable: true,
+            filter: true,
+            floatingFilter: true
+        }
     ]
 
     return (
